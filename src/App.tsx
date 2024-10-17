@@ -7,8 +7,8 @@ const App = () => {
       <PlayerName/>
 
       <Resource name="Steel" amount={50}/>
-      <Resource name="Steel" amount={50}/>
-      <Resource name="Steel" amount={50}/>
+      <Resource name="Steel" amount={25}/>
+      <Resource name="Steel" amount={0}/>
     </div>
   )
 }
