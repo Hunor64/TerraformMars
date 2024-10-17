@@ -32,6 +32,17 @@ const Resource: React.FC<ResourceProps> = ({ name, amount }) => {
                     +
                 </button>
             </div>
+            <div className="buttonContainer">
+                <button className="button" onClick={() => handleChange(false)}>
+                    -
+                </button>
+                <p>
+                    {name}: <span>{count}</span>
+                </p>
+                <button className="button" onClick={() => handleChange(true)}>
+                    +
+                </button>
+            </div>
         </div>
     )
 }
