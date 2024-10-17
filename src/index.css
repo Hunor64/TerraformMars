@@ -80,3 +80,6 @@ body {
   align-items: center;
 }
 
+.buttonContainer p {
+  margin: 10px;
+}
