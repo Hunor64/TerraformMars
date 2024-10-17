@@ -1,3 +1,4 @@
+/* eslint-disable no-irregular-whitespace */
 import React from "react"
 
 type ResourceProps = {
@@ -11,7 +12,7 @@ const Resource: React.FC<ResourceProps> = ({ name, amount }) => {
             <div className="buttonContainer">
                 <button className="button">-</button>
                 <p>
-                    {name}: <span>{amount}</span>
+                    {name}: <span>{amount}</span>
                 </p>
                 <button className="button">+</button>
             </div>
