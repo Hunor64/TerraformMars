@@ -1,13 +1,20 @@
-const Resource = () => {
+import React from 'react';
+
+type ResourceProps = {
+  name: string;
+  amount: number;
+};
+
+const Resource: React.FC<ResourceProps> = ({ name, amount }) => {
   return (
     <div className="Resource">
-        <p>Steel: <span>50</span></p>
-        <div className="buttonContainer">
-          <button className="button">-</button>
-          <button className="button">+</button>
-        </div>
+      <p>{name}: <span>{amount}</span></p>
+      <div className="buttonContainer">
+        <button className="button">-</button>
+        <button className="button">+</button>
       </div>
-  )
-}
+    </div>
+  );
+};
 
-export default Resource
+export default Resource;
