@@ -4,7 +4,7 @@ import Resource from "./Components/Resource"
 const App = () => {
   return (
     <div className="container">
-      <PlayerName name="PlayerName"/>
+      <PlayerName/>
 
       <Resource name="Steel" amount={50}/>
       <Resource name="Steel" amount={50}/>
