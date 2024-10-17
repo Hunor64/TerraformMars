@@ -1,14 +1,15 @@
+import React from "react"
 import PlayerName from "./Components/PlayerName/PlayerName"
 import Resource from "./Components/Resource/Resource"
 
 const App = () => {
-    const MegaCredits = 0
-    const TermelesiSavok = 0
-    const Acel = 0
-    const Titan = 0
-    const Palantak = 0
-    const Energia = 0
-    const Ho = 0
+    const [MegaCredits] = React.useState(0)
+    const [TermelesiSavok] = React.useState(0)
+    const [Acel] = React.useState(0)
+    const [Titan] = React.useState(0)
+    const [Palantak] = React.useState(0)
+    const [Energia] = React.useState(0)
+    const [Ho] = React.useState(0)
 
     return (
         <div className="container">

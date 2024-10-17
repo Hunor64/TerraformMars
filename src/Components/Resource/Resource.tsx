@@ -9,25 +9,26 @@ type ResourceProps = {
 const Resource: React.FC<ResourceProps> = ({ name, amount }) => {
     const [count, setCount] = React.useState(amount)
 
-    const handleIncrement = () => {
-        setCount(count + 1)
-    }
-
-    const handleDecrement = () => {
-        if (count === 0) return
-        setCount(count - 1)
+    const handleChange = (add:boolean) => {
+        if (add) {   
+            setCount(count + 1)
+        }
+        else{
+            if (count === 0) return
+            setCount(count - 1)
+        }
     }
 
     return (
         <div className="Resource">
             <div className="buttonContainer">
-                <button className="button" onClick={handleDecrement}>
+                <button className="button" onClick={() => handleChange(false)}>
                     -
                 </button>
                 <p>
                     {name}: <span>{count}</span>
                 </p>
-                <button className="button" onClick={handleIncrement}>
+                <button className="button" onClick={() => handleChange(true)}>
                     +
                 </button>
             </div>
