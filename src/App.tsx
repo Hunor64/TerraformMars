@@ -6,9 +6,9 @@ const App = () => {
       <div className="PlayerName">
         <h1>PlayerName</h1>
       </div>
-      <Resource name="steel" amount={50}/>
-      <Resource name="steel" amount={50}/>
-      <Resource name="steel" amount={50}/>
+      <Resource name="Steel" amount={50}/>
+      <Resource name="Steel" amount={50}/>
+      <Resource name="Steel" amount={50}/>
     </div>
   )
 }
