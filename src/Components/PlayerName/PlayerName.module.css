@@ -1,0 +1,42 @@
+.PlayerName h1 {
+    font-size: 3rem;
+    margin-bottom: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  
+  }
+  
+  .PlayerInput {
+    display: flex;
+    flex-direction: column;
+  
+  }
+  
+  .PlayerInput input {
+    padding: 8px;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    font-size: 1.5rem;
+  }
+  
+  .PlayerInput button {
+    background-color: var(--teal);
+    color: var(--parchment);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 2rem;
+    font-weight: 800;
+    transition: all 0.3s ease;
+    margin: 5px;
+  }
+  
+  .PlayerInput button:hover {
+    background-color: var(--cambridge-blue);
+  }
+  
+  .PlayerInput button:active {
+    transform: scale(0.9);
+  }

@@ -1,5 +1,5 @@
-import PlayerName from "./Components/PlayerName"
-import Resource from "./Components/Resource"
+import PlayerName from "./Components/PlayerName/PlayerName"
+import Resource from "./Components/Resource/Resource"
 
 const App = () => {
   return (
