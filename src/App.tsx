@@ -1,63 +1,83 @@
-import { FormEvent, useState } from "react"
+import { FormEvent, useEffect, useState } from "react"
 import "./app.css"
 import PlayerName from "./components/PlayerName/PlayerName"
 import Resource from "./components/Resource/Resource"
+
 function App() {
-    const [Megacredit, setMegacreidt] = useState(0)
-    const [MegacreditProduction, setMegacreditProduction] = useState(0)
+  const loadResource = (resource: string) => {
+    const resourceValue = localStorage.getItem(resource)
+    return resourceValue ? parseInt(resourceValue) : 0
+  }
 
-    const handleMegacreditProduction = (increment: number) => {
-      setMegacreditProduction(MegacreditProduction + increment)
-    }
-    const handlSubmit2 = (e: FormEvent) => {
-        e.preventDefault()
-        setMegacreidt(Megacredit + MegacreditProduction)
-        setSteel(Steel + SteelProduction)
-    }
+  const [Megacredit, setMegacredit] = useState(loadResource("Megacredit"))
+  const [MegacreditProduction, setMegacreditProduction] = useState(loadResource("MegacreditProduction"))
+  const [Steel, setSteel] = useState(loadResource("Steel"))
+  const [SteelProduction, setSteelProduction] = useState(loadResource("SteelProduction"))
 
-    const [Steel, setSteel] = useState(0)
-    const [SteelProduction, setSteelProduction] = useState(0)
-  
-    const handleSteelProduction = (increment: number) => {
-        setSteelProduction(SteelProduction + increment)
-    }
+  const handleMegacreditProduction = (increment: number) => {
+    setMegacreditProduction(MegacreditProduction + increment)
+  }
 
-    const handleIncrement = (
-        increment: number,
-        resource: number,
-        setResource: (value: number) => void
-    ) => {
-        setResource(resource + increment)
-    }
+  const handleSteelProduction = (increment: number) => {
+    setSteelProduction(SteelProduction + increment)
+  }
 
+  const handleIncrement = (
+    increment: number,
+    resource: number,
+    setResource: (value: number) => void
+  ) => {
+    setResource(resource + increment)
+  }
 
-    return (
-        <form onSubmit={handlSubmit2} className="container">
-            <PlayerName></PlayerName>
-            <Resource
-                name="Megacredit"
-                amount={Megacredit}
-                onchange={(increment: number) =>
-                    handleIncrement(increment, Megacredit, setMegacreidt)
-                }
-                production={MegacreditProduction}
-                onchangeProductivity={handleMegacreditProduction}
-            ></Resource>
-            <Resource
-                name="Steel"
-                amount={Steel}
-                onchange={(increment: number) =>
-                    handleIncrement(increment, Steel, setSteel)
-                }
-                production={SteelProduction}
-                onchangeProductivity={handleSteelProduction}
-            ></Resource>
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault()
+    setMegacredit(Megacredit + MegacreditProduction)
+    setSteel(Steel + SteelProduction)
+  }
 
-            <button type="submit" className="NextRound">
-                Next Round
-            </button>
-        </form>
-    )
+  useEffect(() => {
+    localStorage.setItem("Megacredit", Megacredit.toString())
+  }, [Megacredit])
+
+  useEffect(() => {
+    localStorage.setItem("MegacreditProduction", MegacreditProduction.toString())
+  }, [MegacreditProduction])
+
+  useEffect(() => {
+    localStorage.setItem("Steel", Steel.toString())
+  }, [Steel])
+
+  useEffect(() => {
+    localStorage.setItem("SteelProduction", SteelProduction.toString())
+  }, [SteelProduction])
+
+  return (
+    <form onSubmit={handleSubmit} className="container">
+      <PlayerName />
+      <Resource
+        name="Megacredit"
+        amount={Megacredit}
+        onchange={(increment: number) =>
+          handleIncrement(increment, Megacredit, setMegacredit)
+        }
+        production={MegacreditProduction}
+        onchangeProductivity={handleMegacreditProduction}
+      />
+      <Resource
+        name="Steel"
+        amount={Steel}
+        onchange={(increment: number) =>
+          handleIncrement(increment, Steel, setSteel)
+        }
+        production={SteelProduction}
+        onchangeProductivity={handleSteelProduction}
+      />
+      <button type="submit" className="NextRound">
+        Next Round
+      </button>
+    </form>
+  )
 }
 
 export default App

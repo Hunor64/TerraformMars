@@ -1,3 +1,4 @@
+/* eslint-disable no-irregular-whitespace */
 
 type resourceProps={
     name:string,
@@ -10,14 +11,15 @@ type resourceProps={
 const Resource = (props:resourceProps) => {
 return (
 <div className="Resource">
-    <p>{props.name}: <span>{props.amount}</span></p>
     <div className="buttonContainer">
         <button type="button" onClick={()=>props.onchange(-1)}>-</button>
+    <p>{props.name}: <span>{props.amount}</span></p>
         <button type="button" onClick={()=>props.onchange(1)}>+</button>
     </div>
-    <p>termelés: <span>{props.production}</span></p>
+    <br />
     <div className="buttonContainer">
         <button type="button" onClick={()=>props.onchangeProductivity(-1)}>-</button>
+    <p>Production: <span>{props.production}</span></p>
         <button type="button" onClick={()=>props.onchangeProductivity(1)}>+</button>
     </div>
     
