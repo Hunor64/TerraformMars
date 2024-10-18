@@ -63,7 +63,7 @@ function App() {
     useEffect(() => {
         localStorage.setItem("Megacredit", Megacredit.toString())
     }, [Megacredit])
-
+ 
     useEffect(() => {
         localStorage.setItem(
             "MegacreditProduction",
