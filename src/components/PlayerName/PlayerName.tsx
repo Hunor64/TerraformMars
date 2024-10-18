@@ -1,50 +1,47 @@
 import { FormEvent, useState } from "react"
-import styles from './PlayerName.module.css'
+import styles from "./PlayerName.module.css"
 
 const PlayerName = () => {
-const [isEdit, setIsEdit] = useState<boolean>(true);
-const [playerName, setPlayerName] = useState(localStorage.getItem('playerName') || 'Player Name')
+    const [isEdit, setIsEdit] = useState<boolean>(true)
+    const [playerName, setPlayerName] = useState(
+        localStorage.getItem("playerName") || "Player Name"
+    )
 
-const handleChangeEdit = ()=>{
-    setIsEdit(!isEdit)
-}
-
- 
-
-const handlePlayerNameChange = (e:React.ChangeEvent<HTMLInputElement>)=>{
-    setPlayerName(e.target.value)
-    localStorage.setItem('playerName', e.target.value)
-}
-
-const handleSubmit = (e:FormEvent)=>{
-    e.preventDefault()
-    handleChangeEdit()
-} 
-
-  return (
-    <>
-    { isEdit ? 
-    (
-    <div onClick={handleChangeEdit} className={styles.PlayerName}>
-            <h1>{playerName}</h1>
-    </div>)
-    :
-    (
-    <form onSubmit={handleSubmit} className={styles.PlayerInput}>
-        <label htmlFor="playerName">Player Name:</label>
-        <input
-          id="playerName"
-          type="text"
-          value={playerName}
-          onChange={handlePlayerNameChange}
-          placeholder="Enter player name"
-        />
-        <button type="submit">Save Name</button>
-    </form>
-    )  
+    const handleChangeEdit = () => {
+        setIsEdit(!isEdit)
     }
-    </>
-  )
+
+    const handlePlayerNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setPlayerName(e.target.value)
+        localStorage.setItem("playerName", e.target.value)
+    }
+
+    const handleSubmit = (e: FormEvent) => {
+        e.preventDefault()
+        handleChangeEdit()
+    }
+
+    return (
+        <>
+            {isEdit ? (
+                <div onClick={handleChangeEdit} className={styles.PlayerName}>
+                    <h1>{playerName}</h1>
+                </div>
+            ) : (
+                <form onSubmit={handleSubmit} className={styles.PlayerInput}>
+                    <label htmlFor="playerName">Player Name:</label>
+                    <input
+                        id="playerName"
+                        type="text"
+                        value={playerName}
+                        onChange={handlePlayerNameChange}
+                        placeholder="Enter player name"
+                    />
+                    <button type="submit">Save Name</button>
+                </form>
+            )}
+        </>
+    )
 }
 
 export default PlayerName
