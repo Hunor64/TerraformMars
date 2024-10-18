@@ -13,13 +13,17 @@ function App() {
   const [MegacreditProduction, setMegacreditProduction] = useState(loadResource("MegacreditProduction"))
   const [Steel, setSteel] = useState(loadResource("Steel"))
   const [SteelProduction, setSteelProduction] = useState(loadResource("SteelProduction"))
+  const [Titan, setTitan] = useState(loadResource("Titan"))
+  const [TitanProduction, setTitanProduction] = useState(loadResource("TitanProduction"))
+  const [Herb, setHerb] = useState(loadResource("Herb"))
+  const [HerbProduction, setHerbProduction] = useState(loadResource("HerbProduction"))
+  const [Energy, setEnergy] = useState(loadResource("Energy"))
+  const [EnergyProduction, setEnergyProduction] = useState(loadResource("EnergyProduction"))
+  const [Heat, setHeat] = useState(loadResource("Heat"))
+  const [HeatProduction, setHeatProduction] = useState(loadResource("HeatProduction"))
 
-  const handleMegacreditProduction = (increment: number) => {
-    setMegacreditProduction(MegacreditProduction + increment)
-  }
-
-  const handleSteelProduction = (increment: number) => {
-    setSteelProduction(SteelProduction + increment)
+  const handleProduction = (increment: number, production: number, setProduction: (value: number) => void) => {
+    setProduction(production + increment)
   }
 
   const handleIncrement = (
@@ -34,6 +38,10 @@ function App() {
     e.preventDefault()
     setMegacredit(Megacredit + MegacreditProduction)
     setSteel(Steel + SteelProduction)
+    setTitan(Titan + TitanProduction)
+    setHerb(Herb + HerbProduction)
+    setEnergy(Energy + EnergyProduction)
+    setHeat(Heat + HeatProduction)
   }
 
   useEffect(() => {
@@ -52,6 +60,38 @@ function App() {
     localStorage.setItem("SteelProduction", SteelProduction.toString())
   }, [SteelProduction])
 
+  useEffect(() => {
+    localStorage.setItem("Titan", Titan.toString())
+  }, [Titan])
+
+  useEffect(() => {
+    localStorage.setItem("TitanProduction", TitanProduction.toString())
+  }, [TitanProduction])
+
+  useEffect(() => {
+    localStorage.setItem("Herb", Herb.toString())
+  }, [Herb])
+
+  useEffect(() => {
+    localStorage.setItem("HerbProduction", HerbProduction.toString())
+  }, [HerbProduction])
+
+  useEffect(() => {
+    localStorage.setItem("Energy", Energy.toString())
+  }, [Energy])
+
+  useEffect(() => {
+    localStorage.setItem("EnergyProduction", EnergyProduction.toString())
+  }, [EnergyProduction])
+
+  useEffect(() => {
+    localStorage.setItem("Heat", Heat.toString())
+  }, [Heat])
+
+  useEffect(() => {
+    localStorage.setItem("HeatProduction", HeatProduction.toString())
+  }, [HeatProduction])
+
   return (
     <form onSubmit={handleSubmit} className="container">
       <PlayerName />
@@ -62,7 +102,9 @@ function App() {
           handleIncrement(increment, Megacredit, setMegacredit)
         }
         production={MegacreditProduction}
-        onchangeProductivity={handleMegacreditProduction}
+        onchangeProductivity={(increment: number) =>
+          handleProduction(increment, MegacreditProduction, setMegacreditProduction)
+        }
       />
       <Resource
         name="Steel"
@@ -71,7 +113,53 @@ function App() {
           handleIncrement(increment, Steel, setSteel)
         }
         production={SteelProduction}
-        onchangeProductivity={handleSteelProduction}
+        onchangeProductivity={(increment: number) =>
+          handleProduction(increment, SteelProduction, setSteelProduction)
+        }
+      />
+      <Resource
+        name="Titan"
+        amount={Titan}
+        onchange={(increment: number) =>
+          handleIncrement(increment, Titan, setTitan)
+        }
+        production={TitanProduction}
+        onchangeProductivity={(increment: number) =>
+          handleProduction(increment, TitanProduction, setTitanProduction)
+        }
+      />
+      <Resource
+        name="Herb"
+        amount={Herb}
+        onchange={(increment: number) =>
+          handleIncrement(increment, Herb, setHerb)
+        }
+        production={HerbProduction}
+        onchangeProductivity={(increment: number) =>
+          handleProduction(increment, HerbProduction, setHerbProduction)
+        }
+      />
+      <Resource
+        name="Energy"
+        amount={Energy}
+        onchange={(increment: number) =>
+          handleIncrement(increment, Energy, setEnergy)
+        }
+        production={EnergyProduction}
+        onchangeProductivity={(increment: number) =>
+          handleProduction(increment, EnergyProduction, setEnergyProduction)
+        }
+      />
+      <Resource
+        name="Heat"
+        amount={Heat}
+        onchange={(increment: number) =>
+          handleIncrement(increment, Heat, setHeat)
+        }
+        production={HeatProduction}
+        onchangeProductivity={(increment: number) =>
+          handleProduction(increment, HeatProduction, setHeatProduction)
+        }
       />
       <button type="submit" className="NextRound">
         Next Round
