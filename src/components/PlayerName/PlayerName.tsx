@@ -3,14 +3,17 @@ import styles from './PlayerName.module.css'
 
 const PlayerName = () => {
 const [isEdit, setIsEdit] = useState<boolean>(true);
-const [playerName, setPlayerName] = useState('Player Name')
+const [playerName, setPlayerName] = useState(localStorage.getItem('playerName') || 'Player Name')
 
 const handleChangeEdit = ()=>{
     setIsEdit(!isEdit)
 }
 
+ 
+
 const handlePlayerNameChange = (e:React.ChangeEvent<HTMLInputElement>)=>{
     setPlayerName(e.target.value)
+    localStorage.setItem('playerName', e.target.value)
 }
 
 const handleSubmit = (e:FormEvent)=>{
@@ -28,7 +31,14 @@ const handleSubmit = (e:FormEvent)=>{
     :
     (
     <form onSubmit={handleSubmit} className={styles.PlayerInput}>
-        <input type="text" value={playerName} onChange={handlePlayerNameChange}/>
+        <label htmlFor="playerName">Player Name:</label>
+        <input
+          id="playerName"
+          type="text"
+          value={playerName}
+          onChange={handlePlayerNameChange}
+          placeholder="Enter player name"
+        />
         <button type="submit">Save Name</button>
     </form>
     )  
