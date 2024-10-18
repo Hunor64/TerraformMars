@@ -20,7 +20,7 @@ const PlayerName = () => {
         e.preventDefault()
         handleChangeEdit()
     }
-
+ 
     return (
         <>
             {isEdit ? (
